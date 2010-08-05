@@ -1,0 +1,13 @@
+*******************************
+* Written By: Jonathan & Fred *
+*******************************
+
+This program will fetch listings that match search criteria on craigslist and send that user a pre-defined email template.
+
+Also, the fist implementation will include a web interface that will have statistics on emails sent.
+
+Technologies used will be:
+
+PHP
+Smarty
+PostgreSQL
