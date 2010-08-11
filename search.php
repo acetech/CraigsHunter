@@ -1,3 +1,14 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<title>
+			CraigsHunter
+		</title>
+		<Meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	</head>
+	<body>
+		<div class="Content">
+			<div class="search">
 <? 	
 /*
 Modified Citadel Search
@@ -50,19 +61,25 @@ if(isset($_POST['action']) == true)
 			
 			/* Take in Craigs info */
 			/* QRY str ["http://rochester.craigslist.org/search/sss?query=desk&srchType=A&format=rss"] */
+			$url = "http://rochester.craigslist.org/search/sss?query=$keyword&srchType=A&format=rss";
+			/* 1and1
 			$rawrss = new DOMDocument();
 			$rawrss->load("http://rochester.craigslist.org/search/sss?query=$keyword&srchType=A&format=rss");
+			*/
+			$foo = file_get_contents($url); 
+			$rawrss = new DOMDocument(); 
+			$rawrss->loadXML($foo);
 			$arrRss = array();
 			foreach ($rawrss->getElementsByTagName('item') as $node)
 			{
 				$itemRSS = array ( 
-					'title' => $node->getElementsByTagName('title')->item(0)->nodeValue,
-					'link' => $node->getElementsByTagName('link')->item(0)->nodeValue,
-					'description' => $node->getElementsByTagName('description')->item(0)->nodeValue
+					'title' => 			$node->getElementsByTagName('title')->item(0)->nodeValue,
+					'link' => 			$node->getElementsByTagName('link')->item(0)->nodeValue,
+					'description' => 	$node->getElementsByTagName('description')->item(0)->nodeValue
 					);
 				array_push($arrRss, $itemRSS);
 				/* print_r($itemRSS); */
-				echo "<br>{$itemRSS['title']}<br>";
+				echo "<br><a href=\"{$itemRSS['link']}\">{$itemRSS['title']}</a><br>";
 				/*
 				<item rdf:about="http://rochester.craigslist.org/fuo/1891692752.html">
 				<title><![CDATA[Desk chair - excellent condition (Rochester, NY downtown) $60]]></title>
@@ -99,3 +116,13 @@ else
 <?
 }
 ?>
+			</div>
+			<br><br>
+			<div class="results">
+				
+			</div>
+			<br><br>
+		</div>
+	</body>
+</html>
+<? /* QRY str ["http://rochester.craigslist.org/search/sss?query=desk&srchType=A&format=rss"] */ ?>
