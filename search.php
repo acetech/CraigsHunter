@@ -9,6 +9,9 @@ class Search {
 		//do nothing
 	}
 
+	/**
+	*	This function takes a craigslist search URL and returns the information back in an Array()
+	*/
 	function search($url=null) {
 
 		/* Groom the Search
