@@ -3,8 +3,13 @@
 /*
 *	This class will lookup a Craigslist Seach and return an array of the results
 */
-class search {
-	function __construct($keyword=null, $url=null) {
+class Search {
+	
+	function __construct() {
+		//do nothing
+	}
+
+	function search($keyword=null, $url=null) {
 
 		/* Groom the Search */
 		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); /* replace '+' Space, and multi spaces with one space */
@@ -55,14 +60,13 @@ class search {
 		}
 		
 		//Returns Array with Craigslist information
-		return $craigsRss;
+		print_r($craigsRss);
+		//return $craigsRss;
 	}
 	
-	/* Timer Start 
 	function getmicrotime()
 	{
 		list($usec, $sec) = explode(" ",microtime());
 	    return ((float)$usec + (float)$sec);
 	}	
-	*/
 }
