@@ -1,9 +1,9 @@
 <?php
 
 /*
-*	This class will lookup a Craigslist Seach and return an array of the results
+*	Gonna Borrow this.
 */
-class Search {
+class EMail {
 	
 	function __construct() {
 		//do nothing
@@ -12,7 +12,7 @@ class Search {
 	/**
 	*	This function takes a craigslist search URL and returns the information back in an Array()
 	*/
-	function search($url=null) {
+	function getemail($url=null) {
 
 		/* Groom the Search
 		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); // replace '+' Space, and multi spaces with one space
@@ -25,13 +25,13 @@ class Search {
 		$rawrss->loadXML($CLcontents);
 		$craigsRss = array();
 		
-		
+		/*
 		foreach ($rawrss->getElementsByTagName('item') as $node)
 		{
 			$title = $node->getElementsByTagName('title')->item(0)->nodeValue;
 			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
 			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
-			/* todo: parse ^ into these */
+			/* todo: parse ^ into these *//*
 			$name = ""; //this should be at the beginning of the title description string, with 0 or more location and price
 			$location = ""; //location is optional, it occurs after name and before price, price is also optional, location occurs within parentheses
 			$price = ""; //price is optional, this occurs after location wich is option as well, it will have a dollar sign and follow a number format
@@ -51,12 +51,14 @@ class Search {
 		
 		//Returns Array with Craigslist information
 		return $craigsRss;
+		*/
 	}
-	
+	/*
 	function getmicrotime()
 	{
 		list($usec, $sec) = explode(" ",microtime());
 	    return ((float)$usec + (float)$sec);
 	}	
+	*/
 }
 ?>
