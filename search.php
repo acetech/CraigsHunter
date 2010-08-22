@@ -3,8 +3,11 @@
 /*
 *	This class will lookup a Craigslist Seach and return an array of the results
 */
-public class search {
+function search ($keyword, $url)
+{
+	/* ???
 	function __construct($keyword=null, $url=null) {
+	*/
 
 		/* Groom the Search */
 		$keyword = preg_replace('/\s\s+/', ' ',$keyword); 
@@ -36,7 +39,7 @@ public class search {
 			$title = $node->getElementsByTagName('title')->item(0)->nodeValue;
 			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
 			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
-			
+			/* todo parse ^ into these */
 			$name = "";
 			$location = "";
 			$price = "";
@@ -56,7 +59,9 @@ public class search {
 		
 		//Returns Array with Craigslist information
 		return $craigsRss;
+	/* ???
 	}
+	*/
 	
 	/* Timer Start */
 	function getmicrotime()

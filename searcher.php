@@ -1,5 +1,6 @@
 <?php
-
-$obj = new search("rolex", "http://rochester.craigslist.org/search/sss?query=$keyword&srchType=A&format=rss");
+include ('search.php');
+$query = "Rolex";
+$obj = search($query, "http://rochester.craigslist.org/search/sss?query=$query&srchType=A&format=rss");
 
 print_r($obj);
