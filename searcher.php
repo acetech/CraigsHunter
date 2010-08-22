@@ -4,6 +4,7 @@ $query = "Rolex";
 
 $obj = new Search();
 
-$obj->search($query, "http://rochester.craigslist.org/search/sss?query=$query&srchType=A&format=rss");
+$query = "Rolex";
+$obj->search("http://rochester.craigslist.org/search/sss?query=$query&srchType=A&format=rss");
 
 print_r($obj);
