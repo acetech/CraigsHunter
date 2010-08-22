@@ -6,52 +6,40 @@
 class EMail {
 	
 	function __construct() {
-		//do nothing
+		//Startup
 	}
 
-	/**
-	*	This function takes a craigslist search URL and returns the information back in an Array()
-	*/
+	/************************************************************************************************
+	**																								*
+	**	This function takes a craigslist Page and trims everything except the email address			*
+	**																								*
+	**	Will Return Email or "NONE"																	*
+	**																								*
+	************************************************************************************************/
 	function getemail($url=null) {
+		
+		/* Take in Craigs page */
+		$CLcontents = file_get_contents($url);
+		
+		// EMail Line
+		// Reply to: <a href="mailto:sale-swgxr-1912504093@craigslist.org?subject=Little%20Tikes%20Lighted%20Art%20Desk%20-%20%2435%20(Penfield)&amp;body=%0A%0Ahttp%3A%2F%2Frochester.craigslist.org%2Fbab%2F1912504093.html%0A">sale-swgxr-1912504093@craigslist.org</a> <sup>[<a href="http://www.craigslist.org/about/help/replying_to_posts" target="_blank">Errors when replying to ads?</a>]</sup><br>
+		// Reply to: see below <br>
 
-		/* Groom the Search
-		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); // replace '+' Space, and multi spaces with one space
-		$keyword = preg_replace('/[^a-zA-Z0-9\!@#$%^&*(){}|;:,.<>?-_=+`~�\s]/', '', $keyword); // replace anythiong thats not normal with nothing
-		*/
+		//$email = end(explode('mailto:',$CLcontents));
+		//$email = current(explode('?subject=',$email));
+		$email = current(explode('?subject=', current(explode(' <br>',end(explode('mailto:',end(explode('Reply to: ',$CLcontents))))))));
 		
-		/* Take in Craigs info */
-		$CLcontents = file_get_contents($url); 
-		$rawrss = new DOMDocument(); 
-		$rawrss->loadXML($CLcontents);
-		$craigsRss = array();
+		//echo 'Var:[' . $email . ']'; //After
 		
-		/*
-		foreach ($rawrss->getElementsByTagName('item') as $node)
+		// ToDo: Add Email Validation Here?
+		if ($email == 'see below')
 		{
-			$title = $node->getElementsByTagName('title')->item(0)->nodeValue;
-			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
-			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
-			/* todo: parse ^ into these *//*
-			$name = ""; //this should be at the beginning of the title description string, with 0 or more location and price
-			$location = ""; //location is optional, it occurs after name and before price, price is also optional, location occurs within parentheses
-			$price = ""; //price is optional, this occurs after location wich is option as well, it will have a dollar sign and follow a number format
-			
-			$itemRSS = array ( 
-				'title' => $title,
-				'link' => $link,
-				'description' => $description,
-				'name' => $name,
-				'location' => $location,
-				'price' => $price
-			);				
-			//Each item will be pusshed into an array named $arrRss
-			array_push($craigsRss, $itemRSS);
-			
+			$email = "NONE";
 		}
 		
-		//Returns Array with Craigslist information
-		return $craigsRss;
-		*/
+		// Returns Email Address to caller
+		return $email;
+		
 	}
 	/*
 	function getmicrotime()
