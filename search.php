@@ -3,15 +3,12 @@
 /*
 *	This class will lookup a Craigslist Seach and return an array of the results
 */
-function search ($keyword, $url)
-{
-	/* ???
+class search {
 	function __construct($keyword=null, $url=null) {
-	*/
 
 		/* Groom the Search */
-		$keyword = preg_replace('/\s\s+/', ' ',$keyword); 
-		$keyword = preg_replace('/[^a-zA-Z0-9\!@#$%^&*(){}|;:,.<>?-_=+`~�\s]/', '', $keyword);
+		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); /* replace '+' Space, and multi spaces with one space */
+		$keyword = preg_replace('/[^a-zA-Z0-9\!@#$%^&*(){}|;:,.<>?-_=+`~�\s]/', '', $keyword); /* replace anythiong thats not normal with nothing */
 
 		/* Take in Craigs info */
 		$CLcontents = file_get_contents($url); 
@@ -39,7 +36,7 @@ function search ($keyword, $url)
 			$title = $node->getElementsByTagName('title')->item(0)->nodeValue;
 			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
 			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
-			/* todo parse ^ into these */
+			/* todo: parse ^ into these */
 			$name = "";
 			$location = "";
 			$price = "";
@@ -59,14 +56,13 @@ function search ($keyword, $url)
 		
 		//Returns Array with Craigslist information
 		return $craigsRss;
-	/* ???
 	}
-	*/
 	
-	/* Timer Start */
+	/* Timer Start 
 	function getmicrotime()
 	{
 		list($usec, $sec) = explode(" ",microtime());
 	    return ((float)$usec + (float)$sec);
 	}	
+	*/
 }
