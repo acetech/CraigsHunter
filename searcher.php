@@ -1,12 +1,29 @@
 <?php
 include ('SearchEngine.php');
+include ('GetEmail.php');
 $query = "Rolex";
 
-$obj = new Search();
+$srch = new Search();
+$eml = new EMail();
 
 $query = "Rolex";
-$results = $obj->search("http://rochester.craigslist.org/search/sss?query=$query&srchType=A&format=rss");
+$results = $srch->search("http://rochester.craigslist.org/search/sss?query=$query&srchType=A&format=rss");
 
-print_r($results);
+
+
+//print_r($results);
+
+// Return each email address from each result
+
+foreach ($results as $value)
+{
+	$emailvar = $eml->getemail($value['link']);
+	
+	echo 'Result :[';
+	echo strtolower($value['title']);
+	echo '] - EMail:[';
+	echo $emailvar;
+	echo ']<br><br>';
+}
 
 ?>
