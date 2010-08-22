@@ -64,8 +64,8 @@ class Search {
 		}
 		
 		//Returns Array with Craigslist information
-		print_r($craigsRss);
-		//return $craigsRss;
+		//print_r($craigsRss);
+		return $craigsRss;
 	}
 	
 	function getmicrotime()
