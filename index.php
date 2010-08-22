@@ -9,7 +9,7 @@
 	<body>
 		<div class="Content">
 			<div class="search">
-				<form action="./search.php" method="post">
+				<form action="./holder.php" method="post">
 					<p>
 						Search:
 						<input type="text" name="keyword" size="20" maxlength="100">
