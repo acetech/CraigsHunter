@@ -46,9 +46,9 @@ class Search {
 			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
 			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
 			/* todo: parse ^ into these */
-			$name = "";
-			$location = "";
-			$price = "";
+			$name = ""; //this should be at the beginning of the title description string, with 0 or more location and price
+			$location = ""; //location is optional, it occurs after name and before price, price is also optional, location occurs within parentheses
+			$price = ""; //price is optional, this occurs after location wich is option as well, it will have a dollar sign and follow a number format
 			
 			$itemRSS = array ( 
 				'title' => $title,
@@ -64,7 +64,6 @@ class Search {
 		}
 		
 		//Returns Array with Craigslist information
-		//print_r($craigsRss);
 		return $craigsRss;
 	}
 	
