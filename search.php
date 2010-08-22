@@ -11,10 +11,11 @@ class Search {
 
 	function search($keyword=null, $url=null) {
 
-		/* Groom the Search */
-		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); /* replace '+' Space, and multi spaces with one space */
-		$keyword = preg_replace('/[^a-zA-Z0-9\!@#$%^&*(){}|;:,.<>?-_=+`~�\s]/', '', $keyword); /* replace anythiong thats not normal with nothing */
-
+		/* Groom the Search
+		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); // replace '+' Space, and multi spaces with one space
+		$keyword = preg_replace('/[^a-zA-Z0-9\!@#$%^&*(){}|;:,.<>?-_=+`~�\s]/', '', $keyword); // replace anythiong thats not normal with nothing
+		*/
+		
 		/* Take in Craigs info */
 		$CLcontents = file_get_contents($url); 
 		$rawrss = new DOMDocument(); 
