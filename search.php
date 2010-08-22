@@ -9,7 +9,7 @@ class Search {
 		//do nothing
 	}
 
-	function search($keyword=null, $url=null) {
+	function search($url=null) {
 
 		/* Groom the Search
 		$keyword = preg_replace('/[+]\s\s+/', ' ',$keyword); // replace '+' Space, and multi spaces with one space
