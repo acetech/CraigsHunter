@@ -33,14 +33,21 @@ public class search {
 		
 		foreach ($rawrss->getElementsByTagName('item') as $node)
 		{
-			$title = $node->getElementsByTagName('title')->item(0)->nodeValue,
-			$link = $node->getElementsByTagName('link')->item(0)->nodeValue,
-			$description = $node->getElementsByTagName('description')->item(0)->nodeValue
+			$title = $node->getElementsByTagName('title')->item(0)->nodeValue;
+			$link = $node->getElementsByTagName('link')->item(0)->nodeValue;
+			$description = $node->getElementsByTagName('description')->item(0)->nodeValue;
+			
+			$name = "";
+			$location = "";
+			$price = "";
 			
 			$itemRSS = array ( 
 				'title' => $title,
 				'link' => $link,
-				'description' => $description			
+				'description' => $description,
+				'name' => $name,
+				'location' => $location,
+				'price' => $price
 			);				
 			//Each item will be pusshed into an array named $arrRss
 			array_push($craigsRss, $itemRSS);
