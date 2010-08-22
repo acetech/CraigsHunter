@@ -36,6 +36,12 @@ class Search {
 			$location = ""; //location is optional, it occurs after name and before price, price is also optional, location occurs within parentheses
 			$price = ""; //price is optional, this occurs after location wich is option as well, it will have a dollar sign and follow a number format
 			
+			// Working on the next three
+			//$divide = preg_split('/(\\$[0-9]+(?:\\.[0-9][0-9])?)(?![\\d])/', $title, 1);
+			//var_dump($divide);
+			//echo '<br>';
+			//current(explode(')',end(explode('(',$title))));
+			
 			$itemRSS = array ( 
 				'title' => $title,
 				'link' => $link,
